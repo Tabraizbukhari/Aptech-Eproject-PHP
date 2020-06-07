@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="inde.php" class="brand-link">
+    <a href="dashboard" class="brand-link">
       <img src="dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -45,7 +45,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/users.php" class="nav-link">
+            <a href="user" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Users

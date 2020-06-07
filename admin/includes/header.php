@@ -1,3 +1,9 @@
+<?php 
+    if(isset($_SESSION['usertype']) != "admin")
+      {
+        header('location: signin');
+      }
+?>
 <!DOCTYPE html>
 <html>
 <head>
