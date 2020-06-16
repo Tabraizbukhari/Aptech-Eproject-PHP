@@ -5,5 +5,7 @@ ReWriteRule ^signin?$ pages/login.php
 ReWriteRule ^dashboard?$ index.php
 ReWriteRule ^logout?$ pages/logout.php
 ReWriteRule ^user?$ pages/users.php
+ReWriteRule ^useredit?$ pages/useredit.php
+
 
 

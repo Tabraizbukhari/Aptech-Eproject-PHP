@@ -24,4 +24,22 @@ function getallusers($conn)
     return $result;
     }
 }
+
+function getuser($conn, $id)
+{
+    $stmt = $conn->prepare("SELECT * FROM users WHERE ID = '$id' ");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetch();
+    if($result){
+    return $result;
+    }
+}
+
+function deleteuser($id)
+{
+    $sql = "DELETE FROM MyGuests WHERE id=$id";
+    $conn->exec($sql);
+    echo "Record deleted successfully";
+}
 ?>

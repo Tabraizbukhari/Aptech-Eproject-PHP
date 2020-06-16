@@ -6,6 +6,20 @@
 
  <?php 
     $users = getallusers($conn);
+    if(isset($_GET['deleted'])){
+      $id = $_GET['deleted'];
+      $sql = "DELETE FROM users WHERE id=$id";
+      $conn->exec($sql);
+      header('location: user');
+    }
+    if(isset($_GET['status']) && isset($_GET['el'])){
+      $status = $_GET['status'];
+      $id = $_GET['el'];
+
+      $sql = "UPDATE users SET status= $status WHERE id=$id";
+      $conn->exec($sql);
+      header('location: user');
+     }
  ?>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -14,7 +28,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Users Data</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -34,7 +48,15 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Users</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                    <h3 class="card-title">Users</h3>
+
+                    </div>
+                    <div class="col-md-4 offset-md-4">
+                        <a class="btn btn-primary float-right getmodal" href="">Add New Users</a>
+                    </div>
+                </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -54,6 +76,7 @@
                 <tbody>
 
                 <?php 
+                if($users){
                 foreach ($users as $u) {
                   echo'
                     <tr>
@@ -73,21 +96,33 @@
                         if($u['status'] == 1){ echo "<span class='badge badge-pill badge-success'>Approved</span>"; }
                         else{   echo "<span class='badge badge-pill badge-secondary'>Not Approved</span>";}
                         echo'</td>
-                        <td><a class="btn btn-success" href="#">View Detail</a></td>
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                       view Detail
+                      </button></td>
                         <td>
                                 <div class="btn-group dropleft">
                                     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Action 
                                     </button>
                                     <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Edit</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                    <a class="dropdown-item" href="#">Approved</a>
+                                      <a class="dropdown-item" href="useredit?el='.$u['id'].'">Edit</a>
+                                      <a class="dropdown-item " href="user?deleted='.$u['id'].'">Delete</a>
+                                      <div class="dropdown-divider"></div>
+                                      <h6 class="dropdown-header bg-info text-white">Change Status</h6>
+                                      
+                                      ';
+                                    if($u['status'] == 0){
+                                    echo'  <a class="dropdown-item "  href="user?status=1&el='.$u['id'].'">Approved</a>';
+                                    }else{
+                                    echo'  <a class="dropdown-item "  href=""user?status=0&el='.$u['id'].'">unapproved</a>';
+                                    }
+                                    echo '
                                     </div>
                                 </div>
                         </td>
                     </tr>
-                    ';}   ?>
+                    ';}  
+                    } ?>
                 </tbody>
                 
               </table>
@@ -104,5 +139,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  
  <?php include '../includes/footer.php' ?>

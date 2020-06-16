@@ -15,5 +15,6 @@
 </div>
 <!-- ./wrapper -->
    <?php include 'script.php' ?>
+
 </body>
 </html>

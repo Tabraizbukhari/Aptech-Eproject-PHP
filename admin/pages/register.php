@@ -12,7 +12,7 @@
       else{   $firstname = $_POST['firstname'];   }
 
       if(empty($_POST['lastname'])){   $lastnameerror = "Required Last Name";  }
-      else{   $lastname = $_POST['firstname'];   }
+      else{   $lastname = $_POST['lastname'];   }
 
       if(empty($_POST['email'])){   $emailerror = "Required Email Address ";  }
       else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
