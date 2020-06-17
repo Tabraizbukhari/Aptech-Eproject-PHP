@@ -31,6 +31,17 @@ try {
   // $conn->exec($sql);
   // echo "Table Users created successfully";
 
+    // // sql to create table
+  $sql = "CREATE TABLE faq (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  question VARCHAR(30) NOT NULL,
+  answere VARCHAR(30) NOT NULL,
+  status ENUM('1', '0') DEFAULT '0',
+  reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  )";
+  $conn->exec($sql);
+  echo "Table Users created successfully";
+
 } catch(PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }
