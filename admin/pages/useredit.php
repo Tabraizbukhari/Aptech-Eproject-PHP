@@ -59,15 +59,19 @@
         <div class="col-lg-12">
             <div class="card border-0 rounded shadow">
                 <div class="card-body">
-                    <h2 class="text-md-left text-center">Account Details</h2>
-
-                    <div class="mt-3 text-md-left d-flex justify-content-center text-center d-sm-flex">
+                <div class="row ">
+                    <div class="col-12">
+                    <a href="user" class="btn btn-outline-dark float-right" >  Back </a> 
+                    </div>
+                </div>
+                    <h2 class=" text-center">Update User Profile</h2>
+                    <div class=" d-flex justify-content-center d-sm-flex">
                        
                    <?php if($user['image']){?>
 
-                        <img id="profilepicture" src="<?php echo $user['image']; ?>" class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
+                        <img id="profilepicture" src="<?php echo $user['image']; ?>" class="avatar float-md-center avatar-large shadow " alt="">
                     <?php } else{ ?>
-                        <img id="profilepicture" src="https://via.placeholder.com/300" class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
+                        <img id="profilepicture" src="https://via.placeholder.com/300" class="avatar float-md-center avatar-large shadow " alt="">
                     <?php } ?>
                        
                         
@@ -149,7 +153,7 @@
                         </div><!--end row-->
                         <div class="row">
                             <div class="col-sm-12">
-                                <input type="submit" id="submit" name="save"  class="btn btn-primary float-right" value="Save Changes">
+                                <input type="submit" id="submit" name="save"  class="btn btn-success float-right" value="Save Changes">
                             </div><!--end col-->
                         </div><!--end row-->
                     </form><!--end form-->
