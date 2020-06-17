@@ -180,7 +180,7 @@
                                                         <div class="form-group ">
                                                             <label>Address <span class="disabled">*</span></label>
                                                             <i class="fa fa-location-arrow icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5 "  placeholder="Address" id="address" name="address"  disabled value=" '.$u['address'].'" >
+                                                            <input type="text" class="form-control pl-5 "  placeholder="Address" id="address" name="address"  disabled value="'.$u['address'].'" >
                                                         </div>
                                                     </div>
                                                     
@@ -188,7 +188,7 @@
                                                         <div class="form-group ">
                                                             <label>Country <span class="disabled">*</span></label>
                                                             <i class="fa fa-globe icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5"  placeholder="Country name" id="country" name="country"  disabled value=" '.$u['country'].'" >
+                                                            <input type="text" class="form-control pl-5"  placeholder="Country name" id="country" name="country"  disabled value="'.$u['country'].'" >
                         
                                                         </div>
                                                     </div><!--end col-->
@@ -204,7 +204,7 @@
                                                         <div class="form-group ">
                                                             <label>City <span class="disabled">*</span></label>
                                                             <i class="fa fa-building icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5"  placeholder="City name" id="city" name="city"  disabled value=" '.$u['city'].'" >
+                                                            <input type="text" class="form-control pl-5"  placeholder="City name" id="city" name="city"  disabled value="'.$u['city'].'" >
                         
                                                         </div>
                                                        
@@ -215,7 +215,7 @@
                                                         <div class="form-group ">
                                                             <label>About Us</label>
                                                             <i class="fa fa-comment icon-sm icons"></i>
-                                                            <textarea disabled class="form-control pl-5" name="aboutus"   id="aboutus"  rows="3"> '.$u['aboutus'].'</textarea>
+                                                            <textarea disabled class="form-control pl-5" name="aboutus"   id="aboutus"  rows="3">'.$u['aboutus'].'</textarea>
                                                         </div>
                                                     </div><!--end col-->
                                             
