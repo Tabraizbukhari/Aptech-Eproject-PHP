@@ -42,4 +42,15 @@ function deleteuser($id)
     $conn->exec($sql);
     echo "Record deleted successfully";
 }
+
+
+function getallfaq($conn)
+{
+    $stmt = $conn->prepare("SELECT * FROM faq ");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+    return $result;
+    
+}
 ?>
