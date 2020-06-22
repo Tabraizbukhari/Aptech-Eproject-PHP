@@ -1,5 +1,16 @@
 
 <?php
+    include "../database/database.php";
+
+    //for email check registeration
+    if(isset($_GET['emailcheck'])){
+      echo ''. checkemail($conn, $_GET['emailcheck']);
+    }
+
+    if(isset($_GET['usernamecheck'])){
+        echo ''. checkusername($conn, $_GET['usernamecheck']);
+    }
+    //for email check username
 
 function checkemail($conn, $email)
 {
@@ -8,9 +19,22 @@ function checkemail($conn, $email)
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $stmt->fetch();
     if($result){
-    return $result['email'];
+        return 1;
     }else{
-        return $result;
+        return 0;
+    }
+}
+
+function checkusername($conn, $username)
+{
+    $stmt = $conn->prepare("SELECT * FROM users where username= '$username'");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetch();
+    if($result){
+    return 1;
+    }else{
+        return  0;
     }
 }
 

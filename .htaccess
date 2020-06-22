@@ -1,0 +1,8 @@
+ReWriteEngine On
+
+ReWriteRule ^signup?$ pages/register.php
+ReWriteRule ^signin?$ pages/login.php
+
+
+
+
