@@ -51,7 +51,7 @@
 			</div>
 		</section><!--Suggestions end-->
 
-		<section class="abt-vidz">
+		<!-- <section class="abt-vidz">
 			<ul>
 				<li>
 					<a href="#">Upload Instructions </a>
@@ -63,7 +63,7 @@
 					<a href="#">Mobile Upload </a>
 				</li>
 			</ul>
-        </section><!--abt-vidz-->
-        
+        </section>
+         -->
         
 <?php include "../includes/footer.php" ?>
