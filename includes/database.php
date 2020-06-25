@@ -5,9 +5,9 @@ $username = "root";
 $password = "";
 
 try {
-  $conn = new PDO("mysql:host=$servername;dbname=eproject", $username, $password);
+  $GLOBALS['conn'] = new PDO("mysql:host=$servername;dbname=eproject", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+ 
 
   // sql to create table
   // $sql = "CREATE TABLE users (
@@ -40,8 +40,7 @@ try {
   //   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   //   )";
   //   $conn->exec($sql);
-  //   echo "Table Users created successfully";
-
+    // echo "Table Users created successfully";
 } catch(PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }

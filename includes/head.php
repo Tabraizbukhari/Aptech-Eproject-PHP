@@ -1,7 +1,10 @@
+<?php include "database.php" ?>
+<?php include "function.php" ?>
 <?php
 session_start();
 ob_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,8 +1,7 @@
-<?php include "database/database.php" ?>
-<?php include "function/function.php" ?>
 <?php include "includes/head.php" ?>
 <?php include "includes/navbar.php" ?>
 <?php include "includes/banner.php" ?>
+
 
 <section class="services-sec">
 			<div class="container">

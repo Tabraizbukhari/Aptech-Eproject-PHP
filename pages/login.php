@@ -1,8 +1,25 @@
-<?php include "../database/database.php" ?>
-<?php include "../function/function.php" ?>
+
 <?php include "../includes/head.php" ?>
 <?php include "../includes/navbar.php" ?>
-
+<?php 
+	if(isset($_POST['login'])){
+		$emailerror = null;
+		$passerror	= null;
+		$checkemail	= checkemail($_POST['email']);
+		if(empty($_POST['email'])){
+				$emailerror = "Required Email Address";
+		}else if($checkemail	== false){
+			$emailerror = "Incorrect Email Address ";
+		}
+		if(empty($_POST['password'])){
+			$passerror = "Required Password";
+		}
+		
+		if(empty($emailerror) && empty($passerror)){
+			$passerror = loginuser($_POST['email'], $_POST['password']);
+		}
+	}
+?>
 <section class="banner-section p120">
 		<div class="container">
 			<div class="banner-text">
@@ -20,22 +37,20 @@
 		 		<span>Log into your Oren account</span>
 		 	</div><!--hd-lg end-->
 			<div class="user-account-pr">
-				<form>
+				<form method="POST">
 					<div class="input-sec">
-						<input type="text" name="username" placeholder="Username">
+						<input type="email"	class="<?php if($emailerror) echo"is-invalid"; ?>" name="email" placeholder="Email Address"  value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
+						<?php if(isset($emailerror)){ echo "<div class=' py-1'><span class=' my-1 text-danger'>".$emailerror."</span> </div>"; }?>
+					
 					</div>
 					<div class="input-sec">
-						<input type="Password" name="password" placeholder="Password">
+						<input type="Password" class="<?php if($passerror) echo"is-invalid"; ?>" name="password" placeholder="Password">
+						<?php if(isset($passerror)){ echo "<div class=' py-1'><span class=' my-1 text-danger'>".$passerror."</span> </div>"; }?>
+
 					</div>
-					<div class="chekbox-lg">
-						<label>
-							<input type="checkbox" name="remember" value="rem">
-							<b class="checkmark"> </b>
-							<span>Remember me</span>
-						</label>
-					</div>
+					
 					<div class="input-sec mb-0">
-						<button type="submit">Login</button>
+						<button name="login" type="submit">Login</button>
 					</div><!--input-sec end-->
 				</form>
 				<a href="#" title="" class="fg_btn">Forgot password?</a>

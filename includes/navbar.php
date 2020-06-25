@@ -53,7 +53,7 @@
                                         <span>
                                             <i class="icon-logout"></i>
                                         </span>
-                                        <a href="#" title="">Sign out</a>
+                                        <a href="logout" title="">Sign out</a>
                                     </li>
                                 </ul>
                             </div><!--sd_menu end-->
