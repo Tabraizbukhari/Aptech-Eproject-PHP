@@ -16,9 +16,12 @@
         <div class="image">
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <?php if(isset($_SESSION['firstname'])){
+        
+        <?php 
+     
+        if(isset( $_SESSION['username'])){
                   echo  '<div class="info">
-                          <a href="#" class="d-block">'.$_SESSION['firstname'].'</a>
+                          <a href="#" class="d-block">'. $_SESSION['username'].'</a>
                         </div>';
                 }
             ?>

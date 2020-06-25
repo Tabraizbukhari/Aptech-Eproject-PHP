@@ -3,6 +3,10 @@ ReWriteEngine On
 ReWriteRule ^signup?$ pages/register.php
 ReWriteRule ^signin?$ pages/login.php
 ReWriteRule ^logout?$ pages/logout.php
+ReWriteRule ^profile?$ pages/profile.php
+ReWriteRule ^upload?$ pages/addpost.php
+
+
 ReWriteRule ^home?$ index.php
 
 

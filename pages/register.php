@@ -1,6 +1,9 @@
 <?php include "../includes/head.php" ?>
 <?php include "../includes/navbar.php" ?>
 <?php
+	if($_SESSION['auth']){
+		return header('location: home');
+	}
 $user =  adduser();
 if(isset($user)){
  $usernameerror = $user[0];

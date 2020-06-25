@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+ob_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -56,7 +57,6 @@ try {
     // title VARCHAR(50) NOT NULL,
     // images VARCHAR(100) NOT NULL,
     // descriptions VARCHAR(100) NOT NULL,
-    // views INT Null,
     // post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     // FOREIGN KEY (users_id) REFERENCES users(id),
     // FOREIGN KEY (category_id) REFERENCES category(id)

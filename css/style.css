@@ -1507,7 +1507,7 @@ svg:hover path {
 	margin: 0 auto;
 	text-align:center;
 	/*border-right:1px solid #363643;*/
-	padding: 196px 0 210px;
+	padding: 90px 0 210px;
 }
 .upload-videooz i {
 	color: #000;
@@ -1527,7 +1527,7 @@ svg:hover path {
 .upload-videooz form {
 	margin-top: 64px;
 }
-.upload-videooz form label,
+.custom-file-upload,
 .youtube-dwn form button {
 	color: #FFFFFF;
 	font-weight:400;
@@ -4772,4 +4772,15 @@ header.hp_1 .side_links li.user_contrl {
 }
 .padding-bottom-zero{
 	padding-bottom: 0px !important;
+}
+.about{
+
+	font-size: 70px;
+	font-family: Jokerman;
+
+}
+.abouttext{
+	font-size: 15px !important;
+	line-height: 25px;
+	font-family: Georgia;
 }

@@ -1,33 +1,37 @@
-<?php include '../../database/database.php' ?>
-<?php include '../../function/function.php' ?>
+
 <?php
+ include "../includes/database.php";
   if(isset($_POST['login'])){
       $email = $_POST['email'];
       $password = $_POST['password'];
-      $checkemail =  checkemail($conn, $email);
+      // $checkemail =  checkemail($conn, $email);
 
-      if(empty($email)){
-        $emailerror = "Required Email Address";
-      }
-      if(empty($password)){
-        $passworderror = "Required Password ";
-      }
+      // if(empty($email)){
+      //   $emailerror = "Required Email Address";
+      // }
+      // if(empty($password)){
+      //   $passworderror = "Required Password ";
+      // }
 
-      if( $email != $checkemail){
-          $emailerror = "The Email Address Was Not Found ";
-      }else if(empty($emailerror) && empty($passworderror)){
+      // if( $email != $checkemail){
+      //     $emailerror = "The Email Address Was Not Found ";
+      // }else if(empty($emailerror) && empty($passworderror)){
 
       $stmt = $conn->prepare("SELECT * FROM users where password='$password' AND usertype ='admin' ");
       $stmt->execute();
       $result = $stmt->fetch();
+     
       if($result){
-          header('location: dashboard');
-          $_SESSION['usertype']= $result['usertype'];
+       
+          $_SESSION['usertype'] = $result['usertype'];
           $_SESSION['firstname']= $result['firstname'];
+         
+          header('location: index.php');
+      
       }else{
         $passworderror = "Incorrect password ";  
       }
-    }
+    // }
   }
 
 ?>

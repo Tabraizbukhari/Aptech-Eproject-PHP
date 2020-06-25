@@ -1,27 +1,9 @@
- <?php include '../../database/database.php' ?>
- <?php include '../../function/function.php' ?>
+
  <?php include '../includes/header.php' ?>
  <?php include '../includes/navbar.php' ?>
  <?php include '../includes/sidebar.php' ?>
 
- <?php 
-    $users = getallusers($conn);
-    if(isset($_GET['deleted'])){
-      $id = $_GET['deleted'];
-      $sql = "DELETE FROM users WHERE id=$id";
-      $conn->exec($sql);
-      header('location: user');
-    }
-    if(isset($_GET['status']) && isset($_GET['el'])){
-      $status = $_GET['status'];
-      $id = $_GET['el'];
-      
-      $sql = "UPDATE users SET status= $status WHERE id=$id";
-      $conn->exec($sql);
-      header('location: user');
-     
-     }
- ?>
+
  <style>
  .modal-lg {
     max-width: 50%;

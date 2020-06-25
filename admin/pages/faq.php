@@ -1,10 +1,8 @@
-<?php include '../../database/database.php' ?>
- <?php include '../../function/function.php' ?>
- <?php include '../includes/header.php' ?>
+<?php include '../includes/header.php' ?>
  <?php include '../includes/navbar.php' ?>
  <?php include '../includes/sidebar.php' ?>
 <?php 
-    $results = getallfaq($conn);
+    // $results = getallfaq($conn);
 
     if(isset($_POST['addnew'])){
         $qerror =   null;

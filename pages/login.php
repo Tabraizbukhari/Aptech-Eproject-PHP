@@ -2,6 +2,9 @@
 <?php include "../includes/head.php" ?>
 <?php include "../includes/navbar.php" ?>
 <?php 
+	if($_SESSION['auth']){
+		return header('location: home');
+	}
 	if(isset($_POST['login'])){
 		$emailerror = null;
 		$passerror	= null;

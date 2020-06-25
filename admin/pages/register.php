@@ -1,5 +1,5 @@
- <?php include '../../database/database.php' ?>
- <?php include '../../function/function.php' ?>
+ <?php include "../includes/database.php"; ?>
+
 <?php
   if(isset($_POST['register'])){
       $firstnameerror = null;

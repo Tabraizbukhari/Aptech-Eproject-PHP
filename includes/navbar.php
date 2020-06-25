@@ -5,10 +5,10 @@
         <div class="container">
             <div class="top_header_content">
                 <div class="menu_logo">
-                    <a href="#" title="" class="menu">
+                    <a href="home" title="" class="menu">
                         <i class="icon-menu"></i>
                     </a>
-                    <a href="index-2.html" title="" class="logo">
+                    <a href="home" title="" class="logo">
                         <img src="images/logo.png" alt="">
                     </a>
                 </div><!--menu_logo end-->
@@ -22,7 +22,7 @@
                 </div><!--search_form end-->
                 <ul class="controls-lv  py-3">
                     <li>
-                        <a href="<?php if(isset($_SESSION['auth'])){echo"log"; }else{echo"signin";} ?>" title="" class="btn-sm btn-rounded btn btn-outline-dark">Upload</a>
+                        <a href="<?php if(isset($_SESSION['auth'])){echo"upload"; }else{echo"signin";} ?>" title="" class="btn-sm btn-rounded btn btn-outline-dark">Upload</a>
                     </li>
                     <?php if(isset($_SESSION['auth'])){ ?> 
                     <li class="user-log ">
@@ -36,7 +36,7 @@
                                         <span>
                                             <i class="icon-user"></i>
                                         </span>
-                                        <a href="#" title="">My Profile</a>
+                                        <a href="profile" title="">My Profile</a>
                                     </li>
                                 </ul>
                             </div><!--sd_menu end-->
@@ -69,10 +69,10 @@
             </div><!--top_header_content end-->
         </div>
     </div><!--header_content end-->
-    <div class="btm_bar">
-        <div class="container">
+    <div class="btm_bar ">
+        <div class="container ">
             <div class="btm_bar_content">
-                <nav>
+                <nav >
                     <ul>
                         <li><a href="#" title="">Pages</a>
                             <div class="mega-menu">
@@ -106,10 +106,12 @@
                                     <li><a href="User_Account_Page.html" title="">User account page</a></li>
                                 </ul>
                             </div>
-                            <div class="clearfix"></div>
+                           
                         </li>
                         <li><a href="Browse_Categories.html" title="">Categories</a></li>
                     </ul>
+                    
+
                 </nav><!--navigation end-->
               <div class="clearfix"></div>
             </div><!--btm_bar_content end-->
