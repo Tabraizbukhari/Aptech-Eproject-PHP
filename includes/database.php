@@ -11,7 +11,7 @@ try {
 
   // sql to create table
   // $sql = "CREATE TABLE users (
-  // id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  // id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   // username VARCHAR(50),
   // firstname VARCHAR(50) NOT NULL,
   // lastname VARCHAR(50) NOT NULL,
@@ -31,7 +31,7 @@ try {
   // $conn->exec($sql);
   
   //   $sql = "CREATE TABLE faq (
-  //   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  //   id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   //   question VARCHAR(30) NOT NULL,
   //   answere VARCHAR(30) NOT NULL,
   //   status ENUM('1', '0') DEFAULT '0',
@@ -53,9 +53,9 @@ try {
     // id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     // users_id INT(12) UNSIGNED ,
     // category_id INT(12) UNSIGNED ,
-    // title VARCHAR(50) NOT NULL,
-    // images VARCHAR(100) NOT NULL,
-    // descriptions VARCHAR(100) NOT NULL,
+    // title VARCHAR(100) NOT NULL,
+    // images VARCHAR(500) NOT NULL,
+    // descriptions VARCHAR(500) NOT NULL,
     // views INT Null,
     // post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     // FOREIGN KEY (users_id) REFERENCES users(id),

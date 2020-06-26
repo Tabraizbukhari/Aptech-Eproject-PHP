@@ -5,7 +5,7 @@ global $conn;
 if(!$conn){
   include("database.php");
 }
-    //for email check registeration
+//for email check registeration
     if(isset($_GET['emailcheck'])){
       echo ''. checkemail($_GET['emailcheck']);
     }
@@ -32,13 +32,16 @@ if(!$conn){
 			</script>	
 			<?php
 		}else{
-		$_SESSION['auth']= $result['username'];
+		$_SESSION['auth']	= $result['username'];
+		$_SESSION['authid']	= $result['id'];
+		$_SESSION['authcreated'] = $result['reg_date'];
 		header('location: home');
 		}
     }else{
 		return "Incorrect Password";
     }
 }
+
 
 function users($id)
 {
@@ -227,6 +230,33 @@ function Getpostall()
 	
 }
 
+function Authallpost()
+{
+	global $conn;
+	if(isset($_SESSION['authid'])){
+		$id  = $_SESSION['authid'];
+	}
+	$stmt = $conn->prepare("SELECT * FROM post Where users_id = 1 ORDER BY id DESC");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
+	$data = [];
+	foreach ($result as $r) {
+		$user = users($r['users_id']);
+		$category = getCategory($r['category_id']);
+		$x = [
+			'username'	=> $user['username'],
+			'title'		=> $r['title'],
+			'image'		=> $r['images'],
+			'category'	=> $category['category'],
+			'created'	=> time_elapsed_string($r['post_date']),
+			'views'		=> number_format_short($r['views']),
+
+		];	
+		array_push($data, $x);
+	}
+		return $data;
+}
 //get category 
 function getCategory($id){
 	global $conn;

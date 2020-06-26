@@ -2,26 +2,21 @@
 <?php include "../includes/navbar.php" ?>
 <div class="card ">
     <div class="card-body">
-<div class="container bootstrap snippet py-5 my-5">
-    <div class="row py-2">
-     
-  		<div class="col-sm-3"><!--left col-->
-              
-
-      <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        
-            <div class="custom-file">
-                <input type="file" class="custom-file-input " id="inputGroupFile02">
-                <label class="custom-file-label btn btn-primary" for="inputGroupFile02">Upload Image</label>
-            </div>
+        <div class="container bootstrap snippet py-5 my-5">
+            <div class="row py-2">
+                <div class="col-sm-3"><!--left col-->
+                    <div class="text-center">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input " id="inputGroupFile02">
+                        <label class="custom-file-label btn btn-primary" for="inputGroupFile02">Upload Image</label>
+                    </div>
             
-      </div></hr><br>
-
-               
-         
-          
-        </div><!--/col-3-->
+                </div>
+                    </hr>
+                    <br>
+            </div><!--/col-3-->
     	<div class="col-sm-9">
                 <hr>
                   <form class="form" action="##" method="post" id="registrationForm">
@@ -91,20 +86,20 @@
    
     </div>
 
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-9 offset-md-9">  
-                            <div class="card">
-                                <div class="card-body">
-                                    <h1 class="card-title" style="font-size:32px"> Password Reset   <button class="btn btn-outline-primary btn-lg float-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Password Reset</button> </h1>
-                                  
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-9 offset-md-9">  
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="card-title" style="font-size:32px"> Password Reset   <button class="btn btn-outline-primary btn-lg float-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Password Reset</button> </h1>
+                            
                         </div>
                     </div>
-                      
-</div><!--/container-->
-</div><!--/card-->
+                </div>
+            </div>
+            
+        </div><!--/container-->
+    </div><!--/card-->
 </div><!--/card-->
 
 <?php include "../includes/footer.php" ?>
