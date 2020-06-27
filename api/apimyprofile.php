@@ -1,14 +1,13 @@
 <?php
 include '../includes/database.php';
-header('Content-type: application/json'); 
-$limit    =    (isset($_POST['limit']))? $_POST['limit']: 10;
-$page     =    (isset($_POST['page']))? $_POST['page']: '';
-$id       =    (isset($_SESSION['authid']))?$_POST['authid']: '';
+$limit    =    (isset($_GET['limit']))? $_GET['limit']: 10;
+$page     =    (isset($_GET['page']))? $_GET['page']: 0;
+$id       =    (isset($_SESSION['authid']))?$_SESSION['authid']: '';
 postes($limit, $page, $id);
 
 function postes($limit, $page, $id){	
     global $conn;
-	$stmt = $conn->prepare("SELECT * FROM post Where users_id = 1 ORDER BY id DESC");
+	$stmt = $conn->prepare("SELECT * FROM post Where users_id = 1  ORDER BY id DESC LIMIT $limit OFFSET $page ");
     $stmt->execute();
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $resultdata = $stmt->fetchAll();

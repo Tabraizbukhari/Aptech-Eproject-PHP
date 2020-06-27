@@ -32,28 +32,26 @@
 									<div class="clearfix"></div>
 								</div><!--latest-vid-option end-->
 								<div class="vidz_list">
-									<div class="tb-pr">
+									<div class="tb-pr" v-for="img in images"> 
 										<div class="row">
 											<div class="col-xl-8 col-lg-9 col-md-9 col-sm-12">
 												<div class="tab-history acct_page">
 													<div class="videoo">
 														<div class="vid_thumbainl ms br">
 															<a href="single_video_page.html" title="">
-																<img src="images/resources/vide1.png" alt="">
-																<span class="vid-time">30:32</span>
-																<span class="watch_later">
-																	<i class="icon-watch_later_fill"></i>
-																</span>
+																<img :src="img.images" style="height:200px;" alt="">
+																<span class="vid-time"></span>
+																
 															</a>	
 														</div><!--vid_thumbnail end-->
 														<div class="video_info ms br">
-															<h3><a href="single_video_page.html" title="">Kingdom Come: Deliverance Funny Moments and Fails Compilation</a></h3>
+															<h3><a href="single_video_page.html" title="">{{ img.title }}</a></h3>
 															<h4><a href="Single_Channel_Home.html" title="">newfox media</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
-															<span>686K views . 1 week ago</span>
-															<ul>
+															<span><span v-if="img.views">{{ img.views+"views"}}</span>. 1 week ago</span>
+															<!-- <ul>
 																<li><span class="br-1">Inactive</span></li>
 																<li><span class="br-2">Successful</span></li>
-															</ul>
+															</ul> -->
 														</div>
 														<div class="clearfix"></div>
 													</div><!--videoo end-->
@@ -62,7 +60,6 @@
 											<div class="col-xl-4 col-lg-3 col-md-3 col-sm-12">
 												<div class="icon-list">
 													<ul>
-														<li><a href="#" title=""><i class="icon-play"></i></a></li>
 														<li><a href="#" title=""><i class="icon-pencil"></i></a></li>
 														<li><a href="#" title=""><i class="icon-cancel"></i></a></li>
 													</ul>
