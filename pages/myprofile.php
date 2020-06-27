@@ -5,7 +5,18 @@
 		$id 	= $_GET['delete'];
 		$stmt = $conn->prepare("DELETE FROM post WHERE id = '$id'");
     	if($stmt->execute()){
-			header('location: profile');
+			?><script>
+			
+			$(document).ready(function () {
+				var title = "Delted Successfully";
+				var text  =	"your post is deleted successfully"
+				 success(title, text);
+				})
+			
+				</script>
+
+			<?php
+			 header('location: profile');
 		}
 	}
 ?>

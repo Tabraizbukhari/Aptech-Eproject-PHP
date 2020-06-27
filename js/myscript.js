@@ -25,6 +25,24 @@ function success(title, text) {
       });
     // return swal("successfully registered!", "Now..! you are waiting for admistrator approval of your account Thank You!", "success");		
 }
+function deletepost() {
+    return swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Poof! Your imaginary file has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
+}
 
 $(document).ready(function () {
     $("#emailid").on("focusout", function () {
