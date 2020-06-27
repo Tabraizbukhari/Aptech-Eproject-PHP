@@ -1540,7 +1540,7 @@ svg:hover path {
 	cursor: pointer;
 	border:0;
 }
-.upload-videooz div input[type="file"] {
+.upload-videooz div #file-upload {
 	display: none;
 }
 .youtube-dwn {

@@ -2,46 +2,55 @@
 <?php include "../includes/navbar.php" ?>
 <?php $categories = getallCategory(); ?>
 <?php	if(isset($_POST['uploaded'])){
+	global $conn;
 			$titleerror 	=	null;
 			$categoryerror 	=	null;
 			$descriperror	=	null;
 			$imgerror		=	null;
-
+			
 			if(empty($_POST['title'])){
 				$titleerror = "<span class='text-danger'>Required Post Title </span>";
 			}
+			
 			if(empty($_POST['category'])){
 				$categoryerror = "<span class='text-danger'>Required Post Category </span>";
 			}
 			if(empty($_POST['description'])){
-				$descriperror = "<span class='text-danger'>Required Post Category </span>";
+				$descriperror = "<span class='text-danger'>Required Post Description </span>";
 			}
-			if(empty($_FILES['image'])){
+			if(empty($_FILES['image']['name'])){
 				$imgerror = "<span class='text-danger'>Required Image </span>";
 			}
+
 			if(empty($titleerror) && empty($categoryerror) && empty($descriperror) && empty($imgerror)){
 				$img = $_FILES['image']['name'];
 				$imgtemp = $_FILES['image']['tmp_name'];
-				$target_dir = "../image/";
-				$image = $target_dir . basename($author_img);
+				$target_dir = "../images/";
+				$imageupload = $target_dir . basename($img);
+				$imgsave	 = "images/" . basename($img);
 				if(!empty($img)){
-					move_uploaded_file(  $imgtemp , $image);
+					move_uploaded_file(  $imgtemp , $imageupload);
 					$category = $_POST['category'];
 					$title = $_POST['title'];
 					$descrip	= $_POST['description'];
 					$sql = "INSERT INTO post (users_id,category_id, title, images, descriptions)
-                 		VALUES (1,'$category', '$title', '$image','$descrip')";
+                 		VALUES (1,'$category', '$title', '$imgsave','$descrip')";
                   	if($conn->exec($sql)){
-					  }
+						echo "done";
+					}
 				}
 			}
 }?>
 <section class="upload-videooz">
+<form method="post" enctype="multipart/form-data">
 			<div class="container">
 				<div class="row m-0">
 					<div class="col-lg-6 m-0">
+						
 						<div class="video-file p-0">
-							<i class="icon-graphics_05 hid"></i>
+						<?php echo (isset($imgerror))? $imgerror.' </br>': ''; ?>
+							<img src="images/images.svg" class="img-fluid hid" width="150px" height="150px" > 
+							<!-- <i class="fas fa-image hid"></i> -->
 							<div id="btncloseimg"><button hidden="hidden" class="btn m-1 btn-outline-primary float-right" id="btncloseimges">close</button></div>
 							<img src="" id="imgupload" style="height:400px;" class="img-fluid"></img>
 
@@ -51,24 +60,22 @@
 								<label for="file-upload" class="custom-file-upload my-1">
 								    Upload Video
 								</label>
-								<input hidden id="file-upload" type="file"/>
+								<input hidden name="image"  id="file-upload" type="file"/>
 							</div>
 						</div><!--video-file end-->
 					</div>
 					<div class="col-lg-6 m-0">
-							<form method="post">
-							<img src="" id="imgfile" hidden name="image" style="height:400px;" class="img-fluid"></img>
-
+					
                                 <div class="form-group">
                                     <label >Title <span class="text-danger">*</span></label>
-                                    <input type="text" name="title" class="form-control"  placeholder="Enter Title">
-									<?php (isset($titleerror))?? '' ?>
+                                    <input type="text" name="title" class="form-control <?php echo (isset($titleerror))? 'is-invalid': ''; ?>"  placeholder="Enter Title">
+									<?php echo (isset($titleerror))? $titleerror: ''; ?>
 								</div>
                                 <div class="form-group">
                                     <label >Category <span class="text-danger">*</span></label>
-                                    <select id="inputState" class="form-control" name="category">
+                                    <select id="inputState" class="form-control <?php echo (isset($categoryerror))? 'is-invalid': ''; ?>" name="category" >
 									   <?php if($categories){?> 
-											<option selected>Choose...</option>
+											<option value="" disabled selected>Choose...</option>
 											<?php foreach ($categories as $category) {
 												echo '<option value="'.$category['id'].'">'.$category['category'].'</option>';
 											}
@@ -76,19 +83,22 @@
 											echo '<option selected>No Categoies Avialable</option>';
 										}?>
 										
-                                    </select>
+									</select>
+									<?php echo (isset($categoryerror))? $categoryerror: ''; ?>
                                 </div>
                                 <div class="form-group">
                                     <label >Description <span class="text-danger">*</span></label>
-                                   <textarea  class="form-control"  rows="8" name="description" > </textarea>
+								   <textarea  class="form-control <?php echo (isset($descriperror))? 'is-invalid': ''; ?>"  rows="8" name="description"></textarea>
+									<?php echo (isset($descriperror))? $descriperror: ''; ?>
+								   
                                 </div>
                                
                                 <button type="submit" name="uploaded" class="btn btn-outline-primary float-right">Submit</button>
                             
                     			</div>
-                    		</form>
 				</div>
 			</div>
+			</form>
 		</section><!--upload-videooz end-->
 		
 		<section class="suggestions">
