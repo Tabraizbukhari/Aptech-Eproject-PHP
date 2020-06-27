@@ -196,4 +196,37 @@ $(document).ready(function () {
             }
         });
 
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                console.log(reader);
+                reader.onload = function (e) {
+                    $('#imgupload').attr('src', e.target.result);
+                    $('#imgfile').attr('src', e.target.result);
+                    // var html = '<button class="btn m-1 btn-outline-primary float-right" id="btncloseimges">close</button>';
+                    // $('#btncloseimg').append(html);
+                    $('.hid').attr('hidden','hidden');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+      
+        $('#btncloseimges').on('click', function () {
+            console.log('done');
+         $('#imgupload').removeAttr('src');
+         $("#btncloseimges").attr('hidden','hidden');
+         $('.hid').removeAttr('hidden','hidden');
+         $('#imgfile').removeAttr('src');
+        
+
+        })
+        $("#file-upload").change(function(){
+         $('#imgfile').removeAttr('src');
+            
+            $("#btncloseimges").removeAttr('hidden','hidden');
+
+            readURL(this);
+            
+        });
 })

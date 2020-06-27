@@ -1524,11 +1524,11 @@ svg:hover path {
 	color: #6e6f70;
 	font-size: 16px;
 }
-.upload-videooz form {
+.upload-videooz div {
 	margin-top: 64px;
 }
 .custom-file-upload,
-.youtube-dwn form button {
+.youtube-dwn div button {
 	color: #FFFFFF;
 	font-weight:400;
 	font-size: 16px;
@@ -1540,7 +1540,7 @@ svg:hover path {
 	cursor: pointer;
 	border:0;
 }
-.upload-videooz form input[type="file"] {
+.upload-videooz div input[type="file"] {
 	display: none;
 }
 .youtube-dwn {
@@ -1549,10 +1549,10 @@ svg:hover path {
 	text-align:center;
 	padding:196px 0 210px;
 }
-.youtube-dwn form{
+.youtube-dwn div{
 	position:relative;
 }
-.youtube-dwn form input[type="text"]{
+.youtube-dwn div input[type="text"]{
 	color: #C3C3D2;
 	font-weight:400;
 	font-size: 16px;
@@ -1564,7 +1564,7 @@ svg:hover path {
 	border:none;
 	padding:0 16px;
 }
-.youtube-dwn form button {
+.youtube-dwn div button {
 	position: absolute;
 	top: 0;
 	right: 0;

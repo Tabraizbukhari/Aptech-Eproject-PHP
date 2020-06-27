@@ -241,6 +241,17 @@ function getCategory($id){
 	}
 }
 
+//get category 
+function getallCategory(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT * FROM category");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$result = $stmt->fetchAll();
+	return $result;
+	
+}
+
 
 function time_elapsed_string($datetime, $full = false) {
     $now = new DateTime;
