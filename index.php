@@ -3,7 +3,9 @@
 <?php include "includes/banner.php" ?>
 <!-- Container (About Section) -->
 <?php include "pages/about.php" ?>
-<?php	$posts = Getpostall(); ?>
+<?php	$posts = Getpostall(); 
+
+?>
 	
 
 		<section class="vds-main">
@@ -43,5 +45,7 @@
 			
 		</section><!--vds-main end-->
 
-		<?php include "includes/counter.php" ?>
+		<?php 
+		// include "includes/counter.php" 
+		?>
 <?php include "includes/footer.php" ?>

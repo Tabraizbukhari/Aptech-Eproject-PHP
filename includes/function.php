@@ -344,4 +344,6 @@ function number_format_short( $n, $precision = 1 ) {
 
 	return $n_format . $suffix;
 }
+
+
 ?>

@@ -16,6 +16,15 @@ function successregister() {
       });
     // return swal("successfully registered!", "Now..! you are waiting for admistrator approval of your account Thank You!", "success");		
 }
+function success(title, text) {
+    console.log('done');
+    return  swal({
+        title: title,
+        text:  text,
+        icon: "success",
+      });
+    // return swal("successfully registered!", "Now..! you are waiting for admistrator approval of your account Thank You!", "success");		
+}
 
 $(document).ready(function () {
     $("#emailid").on("focusout", function () {

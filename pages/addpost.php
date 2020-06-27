@@ -3,44 +3,56 @@
 <?php $categories = getallCategory(); ?>
 <?php	if(isset($_POST['uploaded'])){
 	global $conn;
-			$titleerror 	=	null;
-			$categoryerror 	=	null;
-			$descriperror	=	null;
-			$imgerror		=	null;
-			
-			if(empty($_POST['title'])){
-				$titleerror = "<span class='text-danger'>Required Post Title </span>";
-			}
-			
-			if(empty($_POST['category'])){
-				$categoryerror = "<span class='text-danger'>Required Post Category </span>";
-			}
-			if(empty($_POST['description'])){
-				$descriperror = "<span class='text-danger'>Required Post Description </span>";
-			}
-			if(empty($_FILES['image']['name'])){
-				$imgerror = "<span class='text-danger'>Required Image </span>";
-			}
 
-			if(empty($titleerror) && empty($categoryerror) && empty($descriperror) && empty($imgerror)){
-				$img = $_FILES['image']['name'];
-				$imgtemp = $_FILES['image']['tmp_name'];
-				$target_dir = "../images/";
-				$imageupload = $target_dir . basename($img);
-				$imgsave	 = "images/" . basename($img);
-				if(!empty($img)){
-					move_uploaded_file(  $imgtemp , $imageupload);
-					$category = $_POST['category'];
-					$title = $_POST['title'];
-					$descrip	= $_POST['description'];
-					$sql = "INSERT INTO post (users_id,category_id, title, images, descriptions)
-                 		VALUES (1,'$category', '$title', '$imgsave','$descrip')";
-                  	if($conn->exec($sql)){
-						echo "done";
-					}
-				}
+	$titleerror 	=	null;
+	$categoryerror 	=	null;
+	$descriperror	=	null;
+	$imgerror		=	null;
+	
+	if(empty($_POST['title'])){
+		$titleerror = "<span class='text-danger'>Required Post Title </span>";
+	}
+	
+	if(empty($_POST['category'])){
+		$categoryerror = "<span class='text-danger'>Required Post Category </span>";
+	}
+	if(empty($_POST['description'])){
+		$descriperror = "<span class='text-danger'>Required Post Description </span>";
+	}
+	if(empty($_FILES['image']['name'])){
+		$imgerror = "<span class='text-danger'>Required Image </span>";
+	}
+
+	if(empty($titleerror) && empty($categoryerror) && empty($descriperror) && empty($imgerror)){
+		$img = $_FILES['image']['name'];
+		$imgtemp = $_FILES['image']['tmp_name'];
+		$target_dir = "../images/";
+		$imageupload = $target_dir . basename($img);
+		$imgsave	 = "images/" . basename($img);
+		if(!empty($img)){
+			move_uploaded_file(  $imgtemp , $imageupload);
+			$category = $_POST['category'];
+			$title = $_POST['title'];
+			$descrip	= $_POST['description'];
+			$sql = "INSERT INTO post (users_id,category_id, title, images, descriptions)
+				 VALUES (1,'$category', '$title', '$imgsave','$descrip')";
+			  if($conn->exec($sql)){
+			?> <script>
+			
+				$(document).ready(function () {
+					var title = "Uploaded Successfully";
+					var text  =	"your post is uploaded successfully"
+					success(title, text);
+					})
+				
+					</script>
+			<?php
 			}
-}?>
+		}
+	}
+}
+
+			?>
 <section class="upload-videooz">
 <form method="post" enctype="multipart/form-data">
 			<div class="container">
