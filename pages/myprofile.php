@@ -1,6 +1,14 @@
 <?php include "../includes/head.php" ?>
 <?php include "../includes/navbar.php" ?>
-<?php	$posts = Authallpost(); ?>
+<?php
+	if(isset($_GET['delete'])){
+		$id 	= $_GET['delete'];
+		$stmt = $conn->prepare("DELETE FROM post WHERE id = '$id'");
+    	if($stmt->execute()){
+			header('location: profile');
+		}
+	}
+?>
 
 
 <section class="user-account">
@@ -39,19 +47,22 @@
 													<div class="videoo">
 														<div class="vid_thumbainl ms br">
 															<a href="single_video_page.html" title="">
-																<img :src="img.images" style="height:200px;" alt="">
+																<img :src="img.image" style="height:200px;" alt="">
 																<span class="vid-time"></span>
 																
 															</a>	
 														</div><!--vid_thumbnail end-->
 														<div class="video_info ms br">
 															<h3><a href="single_video_page.html" title="">{{ img.title }}</a></h3>
-															<h4><a href="Single_Channel_Home.html" title="">newfox media</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
-															<span><span v-if="img.views">{{ img.views+"views"}}</span>. 1 week ago</span>
+															<h4><a href="Single_Channel_Home.html" title="">{{ img.category }}</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
+															<span><span v-if="img.views != 0">{{ img.views+"views"}}</span> · {{ img.created }}</span>
 															<!-- <ul>
 																<li><span class="br-1">Inactive</span></li>
 																<li><span class="br-2">Successful</span></li>
 															</ul> -->
+
+															<h4>Description:</h4>
+															<h5><a href="Single_Channel_Home.html" title="">{{ img.content.substring(0,100)+".."  }}</a></h5>
 														</div>
 														<div class="clearfix"></div>
 													</div><!--videoo end-->
@@ -61,7 +72,7 @@
 												<div class="icon-list">
 													<ul>
 														<li><a href="#" title=""><i class="icon-pencil"></i></a></li>
-														<li><a href="#" title=""><i class="icon-cancel"></i></a></li>
+														<li><a :href="'profile?delete='+img.id" title=""><i class="icon-cancel"></i></a></li>
 													</ul>
 												</div><!--icon-list end-->
 											</div>
