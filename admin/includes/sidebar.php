@@ -59,8 +59,24 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="category" class="nav-link">
+              <i class="nav-icon fas fa-alt"></i>
+              <p>
+              Category
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="posts" class="nav-link">
+              <i class="nav-icon fas fa-alt"></i>
+              <p>
+                Posts
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="faqs" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-question"></i>
               <p>
                 FAQ'S
               </p>

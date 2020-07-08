@@ -5,9 +5,8 @@
     if(isset($_GET['el']))
         {   
             $id     = $_GET['el'];
-            $user   = getuser($conn, $id);
+            $user   = getuser($id);
         }
-
         
     if(isset($_POST['save'])){
 
@@ -30,9 +29,6 @@
           catch(Exception $e) {
             echo 'Message: ' .$e->getMessage();
           }
-
-      
-
     }
 
 ?>
@@ -67,19 +63,19 @@
                        
                    <?php if($user['image']){?>
 
-                        <img id="profilepicture" src="<?php echo $user['image']; ?>" class="avatar float-md-center avatar-large shadow " alt="">
+                        <img id="profilepicture" src="<?php echo '../'.$user['image']; ?>" width="180px" height="180px" class="avatar img-fluid float-md-center avatar-large shadow " alt="">
                     <?php } else{ ?>
                         <img id="profilepicture" src="https://via.placeholder.com/300" class="avatar float-md-center avatar-large shadow " alt="">
                     <?php } ?>
                        
                         
                     </div>
-                    <div class="mt-md-4 mt-3 mt-sm-0 d-flex justify-content-center">
+                    <!-- <div class="mt-md-4 mt-3 mt-sm-0 d-flex justify-content-center">
                             <form  method="POST" enctype="multipart/form-data">
                                 <input type="file" name="file" id="profileimage" class=" mt-2 btn-outline-primary"  required hidden>
                                 <label class="btn btn-outline-primary mt-2 " for="profileimage">Change Picture</label>
                             </form> 
-                        </div>
+                        </div> -->
                     <form  method="POST" enctype="multipart/form-data">
                       
                         <div class="row mt-4">

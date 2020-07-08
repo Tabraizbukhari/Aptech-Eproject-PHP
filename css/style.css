@@ -4784,3 +4784,14 @@ header.hp_1 .side_links li.user_contrl {
 	line-height: 25px;
 	font-family: Georgia;
 }
+.faqsheading{
+	font-size:  50px !important;
+	/* line-height: 25px */
+	font-family: Georgia;
+}
+.contactushead{
+	font-size:  50px !important;
+	/* line-height: 25px */
+	font-family: Georgia;
+
+}

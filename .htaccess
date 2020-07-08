@@ -6,7 +6,14 @@ ReWriteRule ^logout?$ pages/logout.php
 ReWriteRule ^upload?$ pages/addpost.php
 
 ReWriteRule ^profile?$ pages/myprofile.php
-ReWriteRule ^account?$ pages/myaccount.php
+ReWriteRule ^edit-profile?$ pages/editprofile.php
+
+ReWriteRule ^categories?$ pages/categories.php
+ReWriteRule ^searching?$ pages/search.php
+ReWriteRule ^image?$ pages/singleimage.php
+ReWriteRule ^download?$ pages/download.php
+
+
 
 
 

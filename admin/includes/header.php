@@ -1,9 +1,11 @@
 <?php 
     include "database.php";
-    if(isset($_SESSION['usertype']) !=  'admin' )
-      {
-        header('location: signin');
-      }
+    include "function.php";
+
+    // if(isset($_SESSION['usertype']) !=  'admin' )
+    //   {
+    //     header('location: signin');
+    //   }
 ?>
 <!DOCTYPE html>
 <html>

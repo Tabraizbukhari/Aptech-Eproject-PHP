@@ -1,10 +1,10 @@
 <?php include "database.php" ?>
 <?php include "function.php" ?>
-<?php
-session_start();
-ob_start();
-?>
-
+<?php   session_start();
+        ob_start();     
+        $id = (isset($_SESSION['authid'])? $_SESSION['authid']: null);
+        $user   = users($id); 
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 

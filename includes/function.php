@@ -32,9 +32,10 @@ if(!$conn){
 			</script>	
 			<?php
 		}else{
-		$_SESSION['auth']	= $result['username'];
-		$_SESSION['authid']	= $result['id'];
+		$_SESSION['auth']	     = $result['username'];
+		$_SESSION['authid']		 = $result['id'];
 		$_SESSION['authcreated'] = $result['reg_date'];
+		
 		header('location: home');
 		}
     }else{
@@ -46,7 +47,7 @@ if(!$conn){
 function users($id)
 {
 	global $conn;
-    $stmt = $conn->prepare("SELECT * FROM users WHERE ID = '$id' ");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE ID='$id' ");
     $stmt->execute();
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $result = $stmt->fetch();
@@ -216,6 +217,7 @@ function Getpostall()
 		$user = users($r['users_id']);
 		$category = getCategory($r['category_id']);
 		$x = [
+			'id'		=> $r['id'],
 			'username'	=> $user['username'],
 			'title'		=> $r['title'],
 			'image'		=> $r['images'],
@@ -278,8 +280,7 @@ function getallCategory(){
     $stmt->execute();
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 	$result = $stmt->fetchAll();
-	return $result;
-	
+	return  $result;
 }
 
 

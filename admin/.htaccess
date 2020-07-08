@@ -7,6 +7,10 @@ ReWriteRule ^logout?$ pages/logout.php
 ReWriteRule ^user?$ pages/users.php
 ReWriteRule ^useredit?$ pages/useredit.php
 ReWriteRule ^faqs?$ pages/faq.php
+ReWriteRule ^category?$ pages/categories.php
+ReWriteRule ^posts?$ pages/posts.php
+
+
 
 
 

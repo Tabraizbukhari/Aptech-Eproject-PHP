@@ -3,7 +3,22 @@
  <?php include '../includes/navbar.php' ?>
  <?php include '../includes/sidebar.php' ?>
 
+<?php $users  = getallusers();
 
+
+if(isset($_GET['el']) && isset($_GET['status']))
+{   
+        $id     = $_GET['el'];
+        $status = $_GET['status'];
+        $sql = "UPDATE users SET status='$status' WHERE ID ='$id'";
+        if($conn->exec($sql)){
+            $success = "User Successfully Updated";
+            header('location: user');
+    }
+}
+
+
+?>
  <style>
  .modal-lg {
     max-width: 50%;
@@ -73,7 +88,7 @@
                         <td>'.$u['email'].'</td>
                         <td>';
                         if($u['image']){  
-                            echo '<img src="'.$u['image'].'" class="img-fluid rounded" width="50px" height="50px">';
+                            echo '<img src="../'.$u['image'].'" class="img-fluid rounded" width="50px" height="50px">';
                             }else{
                                 echo '<img src="images/man.jpg" class="img-fluid rounded" width="50px" height="50px">';
                             }
@@ -129,7 +144,7 @@
                                            
                         
                                             <div class="mt-3 text-md-left d-flex justify-content-center text-center d-sm-flex">
-                                                <img id="profilepicture" src="'.$u['image'].'" class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
+                                                <img id="profilepicture" src="'.$u['image'].'" width="200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
                                             <?php } else{ ?>
                                                 <img id="profilepicture" src="https://via.placeholder.com/200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
                                             <?php } ?>
@@ -188,6 +203,14 @@
                                                             <i class="fa fa-building icon-sm icons"></i>
                                                             <input type="text" class="form-control pl-5"  placeholder="City name" id="city" name="city"  disabled value="'.$u['city'].'" >
                         
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">                                           
+                                                        <div class="form-group ">
+                                                          <label>Contact <span class="disabled">*</span></label>
+                                                          <i class="fa fa-building icon-sm icons"></i>
+                                                          <input type="text" class="form-control pl-5"  placeholder="Contact no" id="contact" name="contach"  disabled value="'.$u['contact_no'].'" >
+                    
                                                         </div>
                                                        
                                                     </div><!--end col-->

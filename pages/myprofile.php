@@ -1,26 +1,29 @@
 <?php include "../includes/head.php" ?>
 <?php include "../includes/navbar.php" ?>
 <?php
-	if(isset($_GET['delete'])){
-		$id 	= $_GET['delete'];
-		$stmt = $conn->prepare("DELETE FROM post WHERE id = '$id'");
-    	if($stmt->execute()){
-			?><script>
-			
-			$(document).ready(function () {
-				var title = "Delted Successfully";
-				var text  =	"your post is deleted successfully"
-				 success(title, text);
-				})
-			
-				</script>
+	if(isset($_POST['update'])){
+    $category =  $_POST['category'];
+    $id       =  $_POST['pid'];
+    $title    =  $_POST['title'];
+    $descrip  =  $_POST['description'];
+        $img = $_FILES['image']['name'];
+		$imgtemp = $_FILES['image']['tmp_name'];
+		$target_dir = "../images/";
+		$imageupload = $target_dir . basename($img);
+		$imgsave	 = "images/" . basename($img);
+		if(!empty($img)){
+			move_uploaded_file(  $imgtemp , $imageupload);
+            $stmt = $conn->prepare("UPDATE post SET title='$title',descriptions='$descrip',category_id='$category',images='$imgsave'  WHERE id='$id' ");
+    }else{
+            $stmt = $conn->prepare("UPDATE post SET title='$title',descriptions='$descrip',category_id='$category' WHERE id='$id' ");
+    } 
+    if($stmt->execute()){
+      $message = "Posts Updated Successfully";
+        $posts  = getAllpost(); 
+    }
+  }
 
-			<?php
-			 header('location: profile');
-		}
-	}
 ?>
-
 
 <section class="user-account">
 			<div class="container">
@@ -29,15 +32,19 @@
 						<div class="sidebar">
 							<div class="widget video_info pr sp">
 								<span class="vc_hd">
-									<img src="images/resources/sn.png" class="img-fluid" alt="">
+								<?php if(isset($user['image'] )){?>
+									<img src="<?php echo  $user['image']; ?>" class="img-fluid" alt="">
+									<?php }else{ ?>
+									<img src="images/man.jpg" class="img-fluid" alt="">
+								<?php }?>	
 								</span>
-								<h4><?php if(isset($_SESSION['auth'])){ echo $_SESSION['auth']; } ?></h4>
-								<p>since: <?php if(isset($_SESSION['authcreated'])){ echo date("d-M, y", strtotime($_SESSION['authcreated'])); } ?> </p>
+								<h4><?php if(isset($user['firstname'])){ echo $user['firstname']; } ?></h4>
+								<p>since: <?php if(isset($user['reg_date'])){ echo date("d-M, y", strtotime($user['reg_date'])); } ?> </p>
 							</div><!--video_info pr-->
 							<div class="widget account">
 								<h2 class="hd-uc"> <i class="icon-user"></i> Account</h2>
 								<ul>
-									<li><a href="account">My Account</a></li>
+									<li><a href="edit-profile">Edit Profile</a></li>
 									<li><a href="#"> Change Password</a></li>
 								</ul>
 							</div><!--account end-->
@@ -47,7 +54,7 @@
 						<div class="video-details">
 							<div class="latest_vidz">
 								<div class="latest-vid-option">
-									<h2 class="hd-op"> {{ message }}</h2>
+									<h2 class="hd-op">{{ message }}</h2>
 									<div class="clearfix"></div>
 								</div><!--latest-vid-option end-->
 								<div class="vidz_list">
@@ -82,12 +89,36 @@
 											<div class="col-xl-4 col-lg-3 col-md-3 col-sm-12">
 												<div class="icon-list">
 													<ul>
-														<li><a href="#" title=""><i class="icon-pencil"></i></a></li>
-														<li><a :href="'profile?delete='+img.id" title=""><i class="icon-cancel"></i></a></li>
+													<li><a data-toggle="modal" :data-target="'#'+img.id">
+														<i class="icon-pencil"></i>
+															</a></li>
+														<li><a  href="javascript:void(0)"  v-on:click="deletepost(img.id)" title=""><i class="icon-cancel"></i></a></li>
 													</ul>
 												</div><!--icon-list end-->
 											</div>
 										</div>
+										<div class="modal fade" :id="img.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Save changes</button>
+												</div>
+												</div>
+											</div>
+											</div>
+
+										
+								
 									</div><!--tb-pr end-->
 									<div class="text-center">
 									<infinite-loading v-cloak direction="bottom" :identifier="infiniteId"  spinner="waveDots"  @infinite="infiniteimages" >

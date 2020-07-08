@@ -25,24 +25,6 @@ function success(title, text) {
       });
     // return swal("successfully registered!", "Now..! you are waiting for admistrator approval of your account Thank You!", "success");		
 }
-function deletepost() {
-    return swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("Poof! Your imaginary file has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Your imaginary file is safe!");
-        }
-      });
-}
 
 $(document).ready(function () {
     $("#emailid").on("focusout", function () {
@@ -256,4 +238,37 @@ $(document).ready(function () {
             readURL(this);
             
         });
+
+
+         //profile image
+    $(document).on('change', '#inputGroupFile02', function () {
+        
+        var property = this.files[0];
+        var image_name = property.name;
+        var image_extension = image_name.split('.').pop().toLowerCase();
+
+        if($.inArray(image_extension, ['png','jpg','jpeg']) == -1)
+        {
+            alert('Invalid Image ');
+        }else{
+
+            var formdata = new FormData();
+            formdata.append('file',property);
+        $.ajax({
+            url:    'api/updateprofilepic.php',
+            type:   'POST',
+            data:   formdata,
+            enctype:"multipart/form-data",
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                var parent = $('#profilepic').parent();
+                var image = '<img id="profilepic" width="200" height="180" src='+data+' class="avatar float-md-center avatar-large shadow mr-md-4" alt="">';
+                $('#profilepic').remove();
+                parent.prepend(image);
+            }
+        });
+     } });
+
 })

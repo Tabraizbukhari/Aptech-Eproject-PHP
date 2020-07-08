@@ -2,7 +2,7 @@
  <?php include '../includes/navbar.php' ?>
  <?php include '../includes/sidebar.php' ?>
 <?php 
-    // $results = getallfaq($conn);
+    $results = getallfaq();
 
     if(isset($_POST['addnew'])){
         $qerror =   null;
@@ -117,7 +117,7 @@
                         <?php echo'
                         <a href="faqs?el='.$r['id'].'" class="btn mx-1 btn-outline-danger float-right" >';
                         ?>
-                            <i class="fa fa-trash-o"> </i>
+                            <i class="fa fa-trash-o">delete</i>
                         </a>
                         
                         <button type="button" class="btn btn-outline-success float-right"data-toggle="modal" data-target="#<?php echo'edit'.$r['id'];?>" >
