@@ -271,4 +271,42 @@ $(document).ready(function () {
         });
      } });
 
+
+
+     $( "#searchForm" ).submit(function( event ) {
+ 
+        // Stop form from submitting normally
+        event.preventDefault();
+        var input = $('#feedbackinput').val();
+        var form_data = new FormData();
+        form_data.append('feedback', input);
+        console.log(input);
+        $.ajax({
+            url: 'api/Feedback.php',
+            type: 'POST',
+            data: form_data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+            },
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                swal({
+                    title: "FEEDBACK",
+                    text:  data,
+                    icon:  "success",
+                }).then(function(value){
+                    if(value){
+                         $('.modal').modal('toggle');
+                         $('#feedbackinput').empty();
+                    }
+                });
+            }
+        });
+      
+        
+      });
+
+
 })

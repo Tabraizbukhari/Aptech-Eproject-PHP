@@ -49,19 +49,27 @@ try {
   //   $conn->exec($sql);
 
    
-  //   $sql = "CREATE TABLE post (
-  //   id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  //   users_id INT(12) UNSIGNED ,
-  //   category_id INT(12) UNSIGNED ,
-  //   title VARCHAR(100) NOT NULL,
-  //   images VARCHAR(500) NOT NULL,
-  //   descriptions VARCHAR(500) NOT NULL,
-  //   views INT Null,
-  //   post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  //   FOREIGN KEY (users_id) REFERENCES users(id),
-  //   FOREIGN KEY (category_id) REFERENCES category(id)
-  //   )";
-  //   $conn->exec($sql);
+    // $sql = "CREATE TABLE post (
+    // id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    // users_id INT(12) UNSIGNED ,
+    // category_id INT(12) UNSIGNED ,
+    // title VARCHAR(100) NOT NULL,
+    // images VARCHAR(500) NOT NULL,
+    // descriptions VARCHAR(500) NOT NULL,
+    // views INT Null,
+    // post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    // FOREIGN KEY (users_id) REFERENCES users(id),
+    // FOREIGN KEY (category_id) REFERENCES category(id)
+    // )";
+    // $conn->exec($sql);
+    // $sql = "CREATE TABLE Feedback (
+    //   id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    //   users_id INT(12) UNSIGNED ,
+    //   feedback VARCHAR(500),
+    //   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    //   FOREIGN KEY (users_id) REFERENCES users(id)
+    //   )";
+      // $conn->exec($sql);
 
 
     // echo "Table Users created successfully";

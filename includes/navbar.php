@@ -10,7 +10,9 @@
         <div class="container">
             <div class="top_header_content">
                 <div class="menu_logo p-2">
-                    
+             
+
+
                     <a href="home" title="" class="logo">
                         <img src="images/logo.png" alt="">
                     </a>
@@ -24,10 +26,18 @@
                     </form>
                 </div><!--search_form end-->
                 <ul class="controls-lv  py-3">
-                  <?php if($name == 'index.php'){ echo"
+                  <?php if($name == 'index.php' && !isset($_SESSION['authid'])){ echo"
                     <li>
                         <a href='#faqs' class='btn-sm nav-item'>FAQ's</a>
-                    </li>";}
+                    </li>";}else{
+                        echo '<li>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                                <span>
+                                <i class="icon-feedback"> Feedback</i>
+                                </span>
+                            </button>
+                        </li>';
+                    }
                     ?>
                    
                     <li>
@@ -59,12 +69,6 @@
                                     
                                     <li>
                                         <span>
-                                            <i class="icon-feedback"></i>
-                                        </span>
-                                        <a href="#" title="">Send feedback</a>
-                                    </li>
-                                    <li>
-                                        <span>
                                             <i class="icon-logout"></i>
                                         </span>
                                         <a href="logout" title="">Sign out</a>
@@ -91,13 +95,43 @@
                     <li><a  class="text-dark"  title="categories">Categories: </a></li>
                     <?php foreach ($categorie as $cate) { echo'
                         <li><a href="categories?search='.$cate['category'].'" title="">'.$cate['category'].'</a></li>
-                    '; }?>
+                    '; }?></li>
+                     
                     </ul>
-                    
-
                 </nav><!--navigation end-->
               <div class="clearfix"></div>
             </div><!--btm_bar_content end-->
         </div>
     </div><!--btm_bar end-->
 </header><!--header end-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">FeedBack FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/" id="searchForm">
+      <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="foot-subscribe form-group position-relative">
+                                <label>Write your Feedback about our service? <span class="text-danger">*</span></label>
+                                <i data-feather="mail" class="fea icon-sm icons"></i>
+                                    <textarea class="form-control" required id="feedbackinput" rows="4"></textarea>
+                            </div>
+                        </div>
+                    
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit"  class="btn btn-soft-primary" value="Feedback">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

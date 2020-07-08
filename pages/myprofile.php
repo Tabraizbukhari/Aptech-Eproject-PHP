@@ -19,10 +19,11 @@
     } 
     if($stmt->execute()){
       $message = "Posts Updated Successfully";
-        $posts  = getAllpost(); 
-    }
-  }
+        // $posts  = getAllpost(); 
+	}
 
+  }
+  $category = getallCategory();
 ?>
 
 <section class="user-account">
@@ -45,7 +46,7 @@
 								<h2 class="hd-uc"> <i class="icon-user"></i> Account</h2>
 								<ul>
 									<li><a href="edit-profile">Edit Profile</a></li>
-									<li><a href="#"> Change Password</a></li>
+									<!-- <li><a href="#"> Change Password</a></li> -->
 								</ul>
 							</div><!--account end-->
 						</div><!--sidebar end-->
@@ -64,15 +65,15 @@
 												<div class="tab-history acct_page">
 													<div class="videoo">
 														<div class="vid_thumbainl ms br">
-															<a href="single_video_page.html" title="">
+															<a :href="'image?el='+img.id" title="">
 																<img :src="img.image" style="height:200px;" alt="">
 																<span class="vid-time"></span>
 																
 															</a>	
 														</div><!--vid_thumbnail end-->
 														<div class="video_info ms br">
-															<h3><a href="single_video_page.html" title="">{{ img.title }}</a></h3>
-															<h4><a href="Single_Channel_Home.html" title="">{{ img.category }}</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
+															<h3><a :href="'image?el='+img.id" title="">{{ img.title }}</a></h3>
+															<h4><a :href="'image?el='+img.id" title="">{{ img.category }}</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
 															<span><span v-if="img.views != 0">{{ img.views+"views"}}</span> · {{ img.created }}</span>
 															<!-- <ul>
 																<li><span class="br-1">Inactive</span></li>
@@ -80,7 +81,7 @@
 															</ul> -->
 
 															<h4>Description:</h4>
-															<h5><a href="Single_Channel_Home.html" title="">{{ img.content.substring(0,100)+".."  }}</a></h5>
+															<h5><a :href="'image?el='+img.id" title="">{{ img.content.substring(0,100)+".."  }}</a></h5>
 														</div>
 														<div class="clearfix"></div>
 													</div><!--videoo end-->
@@ -106,13 +107,35 @@
 													<span aria-hidden="true">&times;</span>
 													</button>
 												</div>
+												<form method="POST" enctype="multipart/form-data">
 												<div class="modal-body">
+												<input type="hidden" :value="img.id" class="form-control" name="pid">
+												<div class="form-group" v-if="img.image">
+												   <img :src="img.image" class="img-fluid text-center" width="100px" >
+												</div>
+												<div class="form-group">
+													<input type="file" name="image">
+												</div>
+													<div class="form-group">
+														<input type="text" :value="img.title" name="title" class="form-control">
+													</div>
+													<div class="form-group" >
+														<select class="form-control" name="category" >
+														<?php foreach ($category as $c) {
+														 echo'<option value="'.$c['id'].'">'.$c['category'].'</option>';
+														}?>
+														</select>
+													</div>
+													<div class="form-group">
+														<input type="text" :value="img.content" name="description" class="form-control">
+													</div>
 													
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Save changes</button>
+													<button type="submit" name="update" class="btn btn-primary">Save changes</button>
 												</div>
+											</form>
 												</div>
 											</div>
 											</div>

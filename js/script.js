@@ -48,12 +48,6 @@
 
     //  ==================== SCROLLING FUNCTION ====================
     
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-
-
-
 
 })(window.jQuery);
 
