@@ -26,10 +26,10 @@
                     </form>
                 </div><!--search_form end-->
                 <ul class="controls-lv  py-3">
-                  <?php if($name == 'index.php' && !isset($_SESSION['authid'])){ echo"
+                  <?php if(!isset($_SESSION['authid'])){ echo"
                     <li>
                         <a href='#faqs' class='btn-sm nav-item'>FAQ's</a>
-                    </li>";}else{
+                    </li>";}else if(isset($_SESSION['authid'])){
                         echo '<li>
                             <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
                                 <span>

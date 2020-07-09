@@ -3,12 +3,13 @@
 <?php $categories = getallCategory(); ?>
 <?php	if(isset($_POST['uploaded'])){
 	global $conn;
+	$countuserpost = $conn->query('select count(*) from post WHERE users_id = '.isset($_SESSION['authid']).'')->fetchColumn(); 
 
 	$titleerror 	=	null;
 	$categoryerror 	=	null;
 	$descriperror	=	null;
 	$imgerror		=	null;
-	
+	if($countuserpost <= 35){
 	if(empty($_POST['title'])){
 		$titleerror = "<span class='text-danger'>Required Post Title </span>";
 	}
@@ -50,9 +51,24 @@
 			}
 		}
 	}
+	}else{
+		?> <script>
+			
+				$(document).ready(function () {
+					
+					swal({
+						title: "Alter Image Uploaded",
+						text: "Each registered user should only be able to upload up to a maximum of 35 images. if user should delete one of the files to upload a new one.",
+						icon: "warning",
+						dangerMode: true,
+					})
+				})
+				
+					</script>
+		<?php
+	}
 }
-
-			?>
+	?>
 <section class="upload-videooz">
 <form method="post" enctype="multipart/form-data">
 			<div class="container">
@@ -104,9 +120,7 @@
 									<?php echo (isset($descriperror))? $descriperror: ''; ?>
 								   
                                 </div>
-                               
                                 <button type="submit" name="uploaded" class="btn btn-outline-primary float-right">Submit</button>
-                            
                     			</div>
 				</div>
 			</div>
@@ -136,5 +150,7 @@
 			</ul>
         </section>
          -->
-        
+
+
+		 <!-- Button trigger modal -->
 <?php include "../includes/footer.php" ?>
