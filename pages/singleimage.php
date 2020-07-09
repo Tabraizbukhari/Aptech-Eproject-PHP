@@ -6,7 +6,11 @@
         $stmt = $conn->prepare("SELECT * FROM post WHERE id = '$id'");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $stmt->fetch();
+		$result = $stmt->fetch();
+		$view = $result['views'] += 1; 
+		$stmt = $conn->prepare("UPDATE  post SET views='$view' WHERE id = '$id'");
+        $stmt->execute();
+        
 		$user = users(isset($result['users_id']));
 		$category = getCategory($result['category_id']);
 		}
