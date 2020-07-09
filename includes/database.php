@@ -9,7 +9,6 @@ try {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
 
-  // sql to create table
   // $sql = "CREATE TABLE users (
   // id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   // username VARCHAR(50),
@@ -23,7 +22,7 @@ try {
   // state VARCHAR(50) NULL,
   // address VARCHAR(50) NULL,
   // contact_no VARCHAR(50) NULL,
-  // aboutus VARCHAR(110) NULL,
+  // aboutus VARCHAR(500) NULL,
   // usertype ENUM('admin', 'user') NOT NULL,
   // status ENUM('1', '0') DEFAULT '0',
   // reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -32,8 +31,8 @@ try {
   
   //   $sql = "CREATE TABLE faq (
   //   id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  //   question VARCHAR(100) NOT NULL,
-  //   answere VARCHAR(100) NOT NULL,
+  //   question VARCHAR(500) NOT NULL,
+  //   answere VARCHAR(500) NOT NULL,
   //   status ENUM('1', '0') DEFAULT '0',
   //   reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   //   )";
@@ -42,34 +41,34 @@ try {
 
   //   $sql = "CREATE TABLE category (
   //     id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  //     category VARCHAR(50) NOT NULL,
+  //     category VARCHAR(200) NOT NULL,
   //     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   //     deleted TIMESTAMP Null
   //   )";
   //   $conn->exec($sql);
 
    
-    // $sql = "CREATE TABLE post (
-    // id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    // users_id INT(12) UNSIGNED ,
-    // category_id INT(12) UNSIGNED ,
-    // title VARCHAR(100) NOT NULL,
-    // images VARCHAR(500) NOT NULL,
-    // descriptions VARCHAR(500) NOT NULL,
-    // views INT Null,
-    // post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    // FOREIGN KEY (users_id) REFERENCES users(id),
-    // FOREIGN KEY (category_id) REFERENCES category(id)
-    // )";
-    // $conn->exec($sql);
-    // $sql = "CREATE TABLE Feedback (
-    //   id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    //   users_id INT(12) UNSIGNED ,
-    //   feedback VARCHAR(500),
-    //   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    //   FOREIGN KEY (users_id) REFERENCES users(id)
-    //   )";
-      // $conn->exec($sql);
+  //   $sql = "CREATE TABLE post (
+  //   id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  //   users_id INT(12) UNSIGNED ,
+  //   category_id INT(12) UNSIGNED ,
+  //   title VARCHAR(500) NOT NULL,
+  //   images VARCHAR(1000) NOT NULL,
+  //   descriptions VARCHAR(1000) NOT NULL,
+  //   views INT Null,
+  //   post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  //   FOREIGN KEY (users_id) REFERENCES users(id),
+  //   FOREIGN KEY (category_id) REFERENCES category(id)
+  //   )";
+  //   $conn->exec($sql);
+  //   $sql = "CREATE TABLE Feedback (
+  //     id INT(12) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  //     users_id INT(12) UNSIGNED ,
+  //     feedback VARCHAR(1000),
+  //     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  //     FOREIGN KEY (users_id) REFERENCES users(id)
+  //     )";
+  //     $conn->exec($sql);
 
 
     // echo "Table Users created successfully";

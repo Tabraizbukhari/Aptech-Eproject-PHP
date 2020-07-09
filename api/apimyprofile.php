@@ -9,7 +9,7 @@ postes($limit, $page, $id);
 
 function postes($limit, $page, $id){	
     global $conn;
-	$stmt = $conn->prepare("SELECT * FROM post Where users_id = 1 ORDER BY id DESC LIMIT $limit OFFSET $page ");
+	$stmt = $conn->prepare("SELECT * FROM post Where users_id = $id ORDER BY id DESC LIMIT $limit OFFSET $page ");
     $stmt->execute();
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $resultdata = $stmt->fetchAll();

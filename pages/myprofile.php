@@ -127,7 +127,7 @@
 														</select>
 													</div>
 													<div class="form-group">
-														<input type="text" :value="img.content" name="description" class="form-control">
+													<textarea  class="form-control" rows='8' name="description">{{ img.content }}</textarea>
 													</div>
 													
 												</div>

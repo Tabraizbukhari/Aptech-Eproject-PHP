@@ -1,7 +1,10 @@
 <?php include "../includes/head.php" ?>
 <?php include "../includes/navbar.php" ?>
 <?php $categories = getallCategory(); ?>
-<?php	if(isset($_POST['uploaded'])){
+<?php	
+
+$id = $_SESSION['authid'];		
+if(isset($_POST['uploaded'])){
 	global $conn;
 	$countuserpost = $conn->query('select count(*) from post WHERE users_id = '.isset($_SESSION['authid']).'')->fetchColumn(); 
 
@@ -25,6 +28,7 @@
 	}
 
 	if(empty($titleerror) && empty($categoryerror) && empty($descriperror) && empty($imgerror)){
+		
 		$img = $_FILES['image']['name'];
 		$imgtemp = $_FILES['image']['tmp_name'];
 		$target_dir = "../images/";
@@ -35,8 +39,9 @@
 			$category = $_POST['category'];
 			$title = $_POST['title'];
 			$descrip	= $_POST['description'];
+		
 			$sql = "INSERT INTO post (users_id,category_id, title, images, descriptions)
-				 VALUES (1,'$category', '$title', '$imgsave','$descrip')";
+				 VALUES ('$id','$category', '$title', '$imgsave','$descrip')";
 			  if($conn->exec($sql)){
 			?> <script>
 			

@@ -26,7 +26,7 @@
                     </form>
                 </div><!--search_form end-->
                 <ul class="controls-lv  py-3">
-                  <?php if(!isset($_SESSION['authid'])){ echo"
+                  <?php if(!isset($_SESSION['authid']) && $name == "index.php" ){ echo"
                     <li>
                         <a href='#faqs' class='btn-sm nav-item'>FAQ's</a>
                     </li>";}else if(isset($_SESSION['authid'])){
