@@ -61,12 +61,12 @@
 					echo'<div class="card">
 							<div class="card-header p-2" id="headingTwo">
 								<h5 class="mb-0">
-								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#e'.$fa['id'].'" aria-expanded="false" aria-controls="collapseTwo">
 									'.$fa['question'].'
 								</button>
 							</h5>
 							</div>
-							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqExample">
+							<div id="e'.$fa['id'].'" class="collapse" aria-labelledby="headingTwo" data-parent="#faqExample">
 								<div class="card-body">
 								 '.$fa['answere'].'
 								</div>

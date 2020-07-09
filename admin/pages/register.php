@@ -1,4 +1,6 @@
  <?php include "../includes/database.php"; ?>
+ <?php include "../includes/function.php"; ?>
+
 
 <?php
   if(isset($_POST['register'])){
@@ -7,7 +9,7 @@
       $emailerror = null;
       $passworderror = null;
       $confirmpassworderror = null;
-      $checkemail = checkemail($conn,$_POST['email']);
+      $checkemail = checkemail($_POST['email']);
       if(empty($_POST['firstname'])){   $firstnameerror = "Required First Name";  }
       else{   $firstname = $_POST['firstname'];   }
 

@@ -9,6 +9,8 @@ ReWriteRule ^useredit?$ pages/useredit.php
 ReWriteRule ^faqs?$ pages/faq.php
 ReWriteRule ^category?$ pages/categories.php
 ReWriteRule ^posts?$ pages/posts.php
+ReWriteRule ^feedback?$ pages/feedback.php
+
 
 
 

@@ -1,4 +1,19 @@
 <?php
+
+function checkemail($email)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM users where email= '$email'");
+    $stmt->execute();
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetch();
+    if($result){
+        return true;
+    }else{
+        return false;
+    }
+}
+
     function getallusers()
     {
         global $conn;
@@ -8,6 +23,17 @@
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    function getallfeedback()
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM feedback ORDER BY id DESC");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
     function getallfaq()
     {
         global $conn;

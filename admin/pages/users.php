@@ -17,6 +17,16 @@ if(isset($_GET['el']) && isset($_GET['status']))
     }
 }
 
+if(isset($_GET['deleted']))
+{   
+        $id     = $_GET['deleted'];
+        $sql = "DELETE FROM users WHERE ID ='$id'";
+        if($conn->exec($sql)){
+            $success = "User Successfully Updated";
+            header('location: user');
+    }
+}
+
 
 ?>
  <style>
@@ -54,10 +64,6 @@ if(isset($_GET['el']) && isset($_GET['status']))
                 <div class="row">
                     <div class="col-md-4">
                     <h3 class="card-title">Users</h3>
-
-                    </div>
-                    <div class="col-md-4 offset-md-4">
-                        <a class="btn btn-primary float-right getmodal" href="">Add New Users</a>
                     </div>
                 </div>
             </div>
@@ -141,13 +147,13 @@ if(isset($_GET['el']) && isset($_GET['status']))
                                 <div class="col-lg-12">
                                     <div class="card border-0 rounded shadow">
                                         <div class="card-body">
-                                           
-                        
+                                          '; ?> <?php if($u['image']){ echo'?> 
                                             <div class="mt-3 text-md-left d-flex justify-content-center text-center d-sm-flex">
                                                 <img id="profilepicture" src="'.$u['image'].'" width="200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
-                                            <?php } else{ ?>
+                                            '; ?><?php } else{ ?>
                                                 <img id="profilepicture" src="https://via.placeholder.com/200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
-                                            <?php } ?>
+                                            <?php }  echo'
+                                            
                                             </div>
                                     
                                                 <div class="row mt-4">

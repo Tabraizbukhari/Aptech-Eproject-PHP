@@ -1,21 +1,23 @@
 
 <?php
  include "../includes/database.php";
-  if(isset($_POST['login'])){
+include "../includes/function.php"; 
+
+ if(isset($_POST['login'])){
       $email = $_POST['email'];
       $password = $_POST['password'];
-      // $checkemail =  checkemail($conn, $email);
+      $checkemail =  checkemail($email);
 
-      // if(empty($email)){
-      //   $emailerror = "Required Email Address";
-      // }
-      // if(empty($password)){
-      //   $passworderror = "Required Password ";
-      // }
+      if(empty($email)){
+        $emailerror = "Required Email Address";
+      }
+      if(empty($password)){
+        $passworderror = "Required Password ";
+      }
 
-      // if( $email != $checkemail){
-      //     $emailerror = "The Email Address Was Not Found ";
-      // }else if(empty($emailerror) && empty($passworderror)){
+      if( $email != $checkemail){
+          $emailerror = "The Email Address Was Not Found ";
+      }else if(empty($emailerror) && empty($passworderror)){
 
       $stmt = $conn->prepare("SELECT * FROM users where password='$password' AND usertype ='admin' ");
       $stmt->execute();
@@ -31,7 +33,7 @@
       }else{
         $passworderror = "Incorrect password ";  
       }
-    // }
+    }
   }
 
 ?>
