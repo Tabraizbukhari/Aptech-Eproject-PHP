@@ -149,9 +149,9 @@ if(isset($_GET['deleted']))
                                         <div class="card-body">
                                           '; ?> <?php if($u['image']){ echo'?> 
                                             <div class="mt-3 text-md-left d-flex justify-content-center text-center d-sm-flex">
-                                                <img id="profilepicture" src="'.$u['image'].'" width="200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
+                                                <img  src="'.$u['image'].'" width="200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
                                             '; ?><?php } else{ ?>
-                                                <img id="profilepicture" src="https://via.placeholder.com/200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
+                                                <img  src="https://via.placeholder.com/200"  class="avatar float-md-center avatar-large shadow mr-md-4" alt="">
                                             <?php }  echo'
                                             
                                             </div>
@@ -161,21 +161,21 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                             <label>First Name <span class="disabled">*</span></label>
                                                             <i class="fa fa-user icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5 " name="fullname" id="fullname" placeholder="First Name" value="'.$u['firstname'].'" disabled>
+                                                            <input type="text" class="form-control pl-5 " name="fullname" placeholder="First Name" value="'.$u['firstname'].'" disabled>
                                                         </div>
                                                     </div><!--end col-->
                                                     <div class="col-md-6">
                                                         <div class="form-group ">
                                                             <label>Last Name <span class="disabled">*</span></label>
                                                             <i class="fa fa-user-plus icon-sm icons"></i>
-                                                            <input type="text" name="lastname" id="lastname" value="'.$u['lastname'].'" class="pl-5 form-control" disabled placeholder="Last Name">
+                                                            <input type="text" name="lastname" value="'.$u['lastname'].'" class="pl-5 form-control" disabled placeholder="Last Name">
                                                         </div>
                                                     </div><!--end col-->
                                                     <div class="col-md-12">
                                                         <div class="form-group ">
                                                             <label>Email Address <span class="text-muted"></span></label>
                                                             <i class="fa fa-briefcase icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5" placeholder="Email Address" id="email" name="email" disabled value="'.$u['email'].'" >
+                                                            <input type="text" class="form-control pl-5" placeholder="Email Address" name="email" disabled value="'.$u['email'].'" >
                                                         </div>
                                                     </div><!--end col-->
                                                   
@@ -183,7 +183,7 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                             <label>Address <span class="disabled">*</span></label>
                                                             <i class="fa fa-location-arrow icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5 "  placeholder="Address" id="address" name="address"  disabled value="'.$u['address'].'" >
+                                                            <input type="text" class="form-control pl-5 "  placeholder="Address" name="address"  disabled value="'.$u['address'].'" >
                                                         </div>
                                                     </div>
                                                     
@@ -191,7 +191,7 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                             <label>Country <span class="disabled">*</span></label>
                                                             <i class="fa fa-globe icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5"  placeholder="Country name" id="country" name="country"  disabled value="'.$u['country'].'" >
+                                                            <input type="text" class="form-control pl-5"  placeholder="Country name" name="country"  disabled value="'.$u['country'].'" >
                         
                                                         </div>
                                                     </div><!--end col-->
@@ -199,7 +199,7 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                             <label>State <span class="disabled">*</span></label>
                                                             <i class="fa fa-dot-circle-o icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5"  placeholder="State name" id="state" name="state"  disabled value="' .$u['state'].'" >
+                                                            <input type="text" class="form-control pl-5"  placeholder="State name" name="state"  disabled value="' .$u['state'].'" >
                         
                                                         </div>
                                                     </div><!--end col-->                           
@@ -207,7 +207,7 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                             <label>City <span class="disabled">*</span></label>
                                                             <i class="fa fa-building icon-sm icons"></i>
-                                                            <input type="text" class="form-control pl-5"  placeholder="City name" id="city" name="city"  disabled value="'.$u['city'].'" >
+                                                            <input type="text" class="form-control pl-5"  placeholder="City name" name="city"  disabled value="'.$u['city'].'" >
                         
                                                         </div>
                                                     </div>
@@ -215,7 +215,7 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                           <label>Contact <span class="disabled">*</span></label>
                                                           <i class="fa fa-building icon-sm icons"></i>
-                                                          <input type="text" class="form-control pl-5"  placeholder="Contact no" id="contact" name="contach"  disabled value="'.$u['contact_no'].'" >
+                                                          <input type="text" class="form-control pl-5"  placeholder="Contact no" name="contach"  disabled value="'.$u['contact_no'].'" >
                     
                                                         </div>
                                                        
@@ -226,7 +226,7 @@ if(isset($_GET['deleted']))
                                                         <div class="form-group ">
                                                             <label>About Us</label>
                                                             <i class="fa fa-comment icon-sm icons"></i>
-                                                            <textarea disabled class="form-control pl-5" name="aboutus"   id="aboutus"  rows="3">'.$u['aboutus'].'</textarea>
+                                                            <textarea disabled class="form-control pl-5" name="aboutus"    rows="3">'.$u['aboutus'].'</textarea>
                                                         </div>
                                                     </div><!--end col-->
                                             

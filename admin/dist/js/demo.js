@@ -4,6 +4,44 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
+
+$(document).ready(function () {
+
+  $(document).on('change', '#inputGroupFile02', function () {
+       
+    var property = this.files[0];
+    var image_name = property.name;
+    var image_extension = image_name.split('.').pop().toLowerCase();
+    console.log(property);
+        if($.inArray(image_extension, ['png','jpg','jpeg']) == -1)
+    {
+        alert('Invalid Image ');
+    }else{
+        var $id = $('#userimageid').val();
+        console.log($id);
+        var formdata = new FormData();
+        formdata.append('file',property);
+        formdata.append('user_id',$id);
+
+    $.ajax({
+        url:    'api/updateprofilepic.php',
+        type:   'POST',
+        data:   formdata,
+        enctype:"multipart/form-data",
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            var parent = $('#profilepic').parent();
+            var image = '<img id="profilepic" width="200" height="180" src='+data+' class="avatar float-md-center avatar-large shadow mr-md-4" alt="">';
+            $('#profilepic').remove();
+            parent.prepend(image);
+        }
+    });
+ } });
+
+});
+
 (function ($) {
   'use strict'
 

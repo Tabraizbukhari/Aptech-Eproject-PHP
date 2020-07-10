@@ -3,7 +3,7 @@
  <?php include '../includes/sidebar.php' ?>
 <?php 
     $results = getallfaq();
-
+    $message = null;
     if(isset($_POST['addnew'])){
         $qerror =   null;
         $aerror =   null;
@@ -20,6 +20,8 @@
         $sql = "INSERT INTO faq (question, answere)
         VALUES ('$q', '$a')";
         $conn->exec($sql);
+        $message   =    "inserted Successfully";
+
         header('location: faqs');
     
         }
@@ -28,8 +30,7 @@
         $qerror =   null;
         $aerror =   null;
         $q =    $_POST['ques'];
-        $id =   $_GET['el'];
-
+        $id =   $_POST['id'];
         if(empty($q)){
             $qerror = "Question Field is empty";
         }
@@ -40,6 +41,7 @@
         if(empty($aerror) && empty($qerror)){
         $sql = "UPDATE faq SET question='$q', answere='$a' where id='$id'";
         $conn->exec($sql);
+        $message   =    "Update Successfully";
         header('location: faqs');
     
         }
@@ -77,8 +79,8 @@
             <?php if(isset($qerror))
                 echo '<span class="text-danger py-1" >'.$qerror.'</span>';
             ?>
-            <?php if(isset($aerror))
-                echo '<span class="text-danger py-1" >'.$qerror.'</span>';
+            <?php if(isset($message))
+                echo '<span class="text-success py-1" >'.$message.'</span>';
             ?>
         </div>
       </div>
@@ -145,6 +147,8 @@
                             </div>
                             <form method="POST">
                                 <div class="modal-body">
+                                <input type="hidden" class="form-control" name="id" value="<?php echo $r['id']; ?>" >
+
                                     <div class="form-group">
                                         <label for="question">Questions</label>
                                         <input type="text" class="form-control" name="ques" value="<?php echo $r['question']; ?>" id="question" aria-describedby="emailHelp" placeholder="Enter a Question">

@@ -77,10 +77,16 @@
                                 <div class="col">
                                     <label><h4>First Name <span class="text-danger">*</span> </h4></label>
                                     <input name="firstname" type="text" value="<?php echo $user['firstname']; ?>" class="form-control" placeholder="First name">
+                                    <?php if(isset($nameerror))
+                                        echo '<span class="text-danger py-1" >'.$nameerror.'</span>';
+                                    ?> 
                                 </div>
                                 <div class="col">
                                     <label><h4>Last Name <span class="text-danger">*</span> </h4></label>
                                     <input name="lastname" type="text" value="<?php echo $user['lastname']; ?>" class="form-control" placeholder="Last name">
+                                    <?php if(isset($lasterror))
+                                       echo '<span class="text-danger py-1" >'.$lasterror.'</span>';
+                                    ?> 
                                 </div>
                         </div>
                         </div>
@@ -94,6 +100,9 @@
                             <div class="col-xs-6">
                                 <label><h4>Country<span class="text-danger">*</span> </h4></label>
                                 <input name="country" type="text" value="<?php echo $user['country']; ?>" class="form-control" id="location" placeholder="Country Name" title="Country">
+                                <?php if(isset($countryerror))
+                                        echo '<span class="text-danger py-1" >'.$countryerror.'</span>';
+                                ?> 
                             </div>
                       </div>
                       <div class="form-group">
@@ -101,10 +110,16 @@
                                 <div class="col">
                                     <label><h4>City: <span class="text-danger">*</span> </h4></label>
                                     <input name="city" type="text" value="<?php echo $user['city']; ?>" class="form-control" placeholder="City name">
+                                    <?php if(isset($cityerror))
+                                        echo '<span class="text-danger py-1" >'.$cityerror.'</span>';
+                                    ?>
                                 </div>
                                 <div class="col">
                                     <label><h4>State: <span class="text-danger">*</span> </h4></label>
                                     <input name="state" type="text" value="<?php echo $user['state']; ?>" class="form-control" placeholder="State name">
+                                    <?php if(isset($stateerror))
+                                        echo '<span class="text-danger py-1" >'.$stateerror.'</span>';
+                                    ?>
                                 </div>
                         </div>
                       </div>
@@ -112,12 +127,18 @@
                             <div class="col-xs-6">
                                 <label><h4>Address: <span class="text-danger">*</span> </h4></label>
                                 <input name="address" type="text" value="<?php echo $user['address']; ?>" class="form-control"  placeholder="user Address Name" title="Address">
+                                <?php if(isset($addresserror))
+                                    echo '<span class="text-danger py-1" >'.$addresserror.'</span>';
+                                ?>
                             </div>
                       </div>
                       <div class="form-group">
                             <div class="col-xs-6">
                                 <label><h4>Contact no: <span class="text-danger">*</span> </h4></label>
                                 <input name="contactno" type="text" value="<?php echo $user['contact_no']; ?>" class="form-control" id="location" placeholder="Contact Number" title="Contact Number">
+                                <?php if(isset($contacterror))
+                                    echo '<span class="text-danger py-1" >'.$contacterror.'</span>';
+                                ?>
                             </div>
                       </div>
                       <div class="form-group">
@@ -125,6 +146,7 @@
                           <div class="col-xs-6">
                               <label ><h4>About us</h4></label>
                               <textarea  name="aboutus" rows="6" class="form-control"><?php echo $user['aboutus']; ?></textarea>
+               
                           </div>
                       </div>
                       <div class="form-group">

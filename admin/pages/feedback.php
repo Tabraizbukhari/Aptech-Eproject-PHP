@@ -23,9 +23,11 @@
     }
   
   }
- if(isset($_POST['update'])){
+ if(isset($_POST['updatefeedback'])){
     $feedback =  $_POST['feedback'];
     $id       =  $_POST['feedbackid'];
+    var_dump($id, $feedback);
+    die();
     $stmt = $conn->prepare("UPDATE feedback SET feedback='$feedback' WHERE id='$id' ");
     if($stmt->execute()){
       $message = "feedback Updated Successfully";
@@ -156,7 +158,7 @@
                               <h5 class="modal-title" id="exampleModalLongTitle"> <h2 class="text-md-left text-center">Edit Feedback</h2></h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                              </button>
+  
                             </div>
                             <div class="modal-body">
                             <form method="POST">
@@ -172,7 +174,7 @@
                                             <textarea class="form-control" name="feedback"  rows="4" cols="50" >'.$feed['feedback'].'</textarea>   
                                           </div>
                                           <div class="form-group">
-                                            <button class="btn btn-success float-right" name="update">Update  Feedback</button> 
+                                            <button type="submit class="btn btn-success float-right" name="updatefeedback">Update  Feedback</button> 
                                           </div>
                                           
                                     </div>

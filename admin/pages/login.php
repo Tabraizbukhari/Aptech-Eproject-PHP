@@ -27,6 +27,7 @@ include "../includes/function.php";
        
           $_SESSION['usertype'] = $result['usertype'];
           $_SESSION['firstname']= $result['firstname'];
+          $_SESSION['authid']   = $result['id'];
          
           header('location: index.php');
       

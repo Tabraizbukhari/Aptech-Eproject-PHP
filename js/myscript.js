@@ -298,7 +298,7 @@ $(document).ready(function () {
                     icon:  "success",
                 }).then(function(value){
                     if(value){
-                         $('.modal').modal('toggle');
+                         $('.modal').modal('hide');
                          $('#feedbackinput').empty();
                     }
                 });
