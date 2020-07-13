@@ -27,6 +27,21 @@ if(isset($_POST['uploaded'])){
 		$imgerror = "<span class='text-danger'>Required Image </span>";
 	}
 
+    $allowed_image_extension = array(
+        "png",
+        "jpg",
+        "jpeg"
+    );
+    $file_extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+    
+    // Validate file input to check if is not empty
+    if (! file_exists($_FILES["image"]["tmp_name"])) {
+		$imgerror = "<span class='text-danger'>Required Image </span>";
+    }    // Validate file input to check if is with valid extension
+    else if (! in_array($file_extension, $allowed_image_extension)) {
+		$imgerror = "<span class='text-danger'>File type only jpg,png,jpeg accepted!</span>";
+    } 
+
 	if(empty($titleerror) && empty($categoryerror) && empty($descriperror) && empty($imgerror)){
 		
 		$img = $_FILES['image']['name'];
@@ -91,7 +106,7 @@ if(isset($_POST['uploaded'])){
 							<span class="hid m-0">upload image in hd</span>
 							<div class="m-0">
 								<label for="file-upload" class="custom-file-upload my-1">
-								    Upload Video
+								    Upload Images
 								</label>
 								<input hidden name="image"  id="file-upload" type="file"/>
 							</div>

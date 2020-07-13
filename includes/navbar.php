@@ -19,7 +19,7 @@
                 </div><!--menu_logo end-->
                 <div class="search_form p-2">
                     <form method="GET" action="searching" >
-                        <input type="text" name="search" placeholder="Search Videos">
+                        <input type="text" name="search" placeholder="Search Images">
                         <button type="submit">
                             <i class="icon-search"></i>
                         </button>
